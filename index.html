@@ -24,7 +24,7 @@
             background-color: var(--bg-color);
             color: var(--text-color);
             font-family: 'Fira Code', monospace;
-            line-height: 1.5;
+            line-height: 1.6;
             overflow-x: hidden;
             padding: 20px;
             position: relative;
@@ -78,7 +78,7 @@
         .block-header {
             color: var(--text-dim);
             font-size: 0.8rem;
-            margin-bottom: 10px;
+            margin-bottom: 15px;
             border-bottom: 1px dashed var(--text-dim);
             padding-bottom: 5px;
             display: flex;
@@ -89,13 +89,16 @@
             color: var(--text-color);
             font-weight: bold;
             font-size: 1.1rem;
-            margin-bottom: 10px;
-            margin-top: 15px;
+            margin-bottom: 8px;
+            margin-top: 20px;
         }
 
         .text-content {
-            white-space: pre-wrap;
             font-size: 0.95rem;
+        }
+
+        .text-content p {
+            margin-bottom: 10px; /* Отступы между абзацами */
         }
 
         .dim { color: #888; }
@@ -178,15 +181,15 @@
         <!-- Верхний блок (Профиль) -->
         <div class="terminal-block">
             <div class="block-header">
-                <span>hijodehiero@localhost:~$ whoami</span>
+                <span>root@hijodehiero:~# whoami</span>
                 <span>status: active // </span>
             </div>
             <h1>hijodehiero</h1>
-            <div class="subtitle">// системный администратор хаоса</div>
-            <p class="text-content">
-                Пишу код, который ломает шаблоны (и иногда продакшн). Живу по принципу: «Если это работает — не трогай, если не работает — значит, так задумано». 
-                Моя главная цель — заставить ваш таск-менеджер плакать кровавыми слезами.
-            </p>
+            <div class="subtitle">> системный администратор хаоса_</div>
+            <div class="text-content">
+                <p>Пишу код, который ломает шаблоны (и иногда продакшн). Живу по принципу: «Если это работает — не трогай, если не работает — значит, так задумано».</p>
+                <p>Моя главная цель — заставить ваш таск-менеджер плакать кровавыми слезами.</p>
+            </div>
         </div>
 
         <!-- Блок whoami -->
@@ -194,22 +197,22 @@
             <div class="block-header">
                 <span>$ cat about_me.txt</span>
             </div>
-            <div class="block-title">$ whoami</div>
+            <div class="block-title">> whoami</div>
             <div class="text-content">
-                Роль: Full-stack дегенерат и по совместительству повелитель багов.<br>
-                Инструменты: <span class="green">Python</span>, <span class="green">C++</span> и безграничная наглость. Логика уровня «потом пофикшу» и алгоритмы, которые обходят любые блокировки.
+                <p>Роль: Full-stack дегенерат и по совместительству повелитель багов.</p>
+                <p>Инструменты: <span class="green">Python</span>, <span class="green">C++</span> и безграничная наглость. Логика уровня «потом пофикшу» и алгоритмы, которые обходят любые блокировки.</p>
             </div>
-            <div class="block-title">$ cat philosophy.txt</div>
+            <div class="block-title">> cat philosophy.txt</div>
             <div class="text-content">
-                Зачем писать чистый и понятный код, если можно написать его так, чтобы через месяц самому не понять, как это работает? 
-                Главное правило: комментарии в коде должны пугать даже автора.
+                <p>Зачем писать чистый и понятный код, если можно написать его так, чтобы через месяц самому не понять, как это работает?</p>
+                <p>Главное правило: комментарии в коде должны пугать даже автора.</p>
             </div>
-            <div class="block-title">$ tail -f reality.log</div>
+            <div class="block-title">> tail -f reality.log</div>
             <div class="text-content">
-                Если вы видите, как сервер упал без причины — это моя работа.<br>
-                Если у вас внезапно сгорел дедлайн — значит, я где-то рядом. 
+                <p>Если вы видите, как сервер упал без причины — это моя работа.</p>
+                <p>Если у вас внезапно сгорел дедлайн — значит, я где-то рядом.</p>
             </div>
-            <div class="block-title">$ systemctl status my_brain</div>
+            <div class="block-title">> systemctl status my_brain</div>
             <div class="text-content cursor">
                 // Ошибка 404: мотивация не найдена. Продолжаю чилить...
             </div>
@@ -222,10 +225,9 @@
                 <span>$ ls ./projects</span>
             </div>
             <div class="text-content">
-                $ ls -la ./my_great_ideas<br>
-                -rwxr-xr-x 1 root root 0B "Идея на миллион (в разработке с 2021 года)"<br>
-                -rw-r--r-- 1 root root 404B "Недописанный скрипт для обхода блокировок"<br>
-                $ rm -rf ./responsibilities
+                <p>-rwxr-xr-x 1 root root 0B "Идея на миллион (в разработке с 2021 года)"</p>
+                <p>-rw-r--r-- 1 root root 404B "Недописанный скрипт для обхода блокировок"</p>
+                <p>$ rm -rf ./responsibilities</p>
             </div>
         </div>
 
@@ -235,12 +237,11 @@
                 <span>$ ./random_thought.sh</span>
             </div>
             <div class="text-content" id="meme-box">
-                <span class="dim">$ ./random_thought.sh --seed 0x0000 > MEME_ID:</span><br>
-                #0x0000 "Я не ленивый. Я просто нахожусь в режиме максимальной энергоэффективности."
-                <br><br>
-                <span class="dim">> status: успешно потрачено еще 5 минут жизни</span>
+                <p><span class="dim">$ ./random_thought.sh --seed 0x0000 > MEME_ID:</span></p>
+                <p>#0x0000 "Я не ленивый. Я просто нахожусь в режиме максимальной энергоэффективности."</p>
+                <p><span class="dim">> status: успешно потрачено еще 5 минут жизни</span></p>
             </div>
-            <button class="btn" onclick="generateMeme()">$ сгенерировать мысль</button>
+            <button class="btn" onclick="generateMeme()">$ сгенерировать_мысль</button>
         </div>
 
         <!-- Блок контактов -->
@@ -256,8 +257,8 @@
 
         <!-- Футер -->
         <div class="footer">
-            <span>// Все права защищены. Никто не пострадал (почти).</span>
-            <span>Чашек кофе выпито: ∞</span>
+            <span>// No humans were harmed (much).</span>
+            <span>uptime: forever</span>
             <span>exit code: 0xDEADBEEF</span>
         </div>
     </div>
@@ -284,10 +285,9 @@
             const memeBox = document.getElementById('meme-box');
             
             memeBox.innerHTML = `
-                <span class="dim">$ ./random_thought.sh --seed 0x${seed} > MEME_ID:</span><br>
-                #0x${seed} "${memes[randomIndex]}"
-                <br><br>
-                <span class="dim">> status: успешно потрачено еще 5 минут жизни</span>
+                <p><span class="dim">$ ./random_thought.sh --seed 0x${seed} > MEME_ID:</span></p>
+                <p>#0x${seed} "${memes[randomIndex]}"</p>
+                <p><span class="dim">> status: успешно потрачено еще 5 минут жизни</span></p>
             `;
         }
 

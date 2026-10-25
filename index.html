@@ -3,15 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HijoDelHierro // System</title>
+    <title>hijodehiero // localhost</title>
     <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-color: #050505;
-            --text-color: #00ff41; /* Кислотно-зеленый */
-            --text-dim: #008f11;
-            --box-bg: rgba(0, 20, 0, 0.6);
-            --border-color: #00ff41;
+            --bg-color: #0a0a0a;
+            --text-color: #d1d5db; /* Сделал цвет текста более реалистичным (светло-серый), как в настоящем терминале */
+            --text-accent: #38bdf8; /* Голубой акцент вместо ядовито-зеленого */
+            --text-dim: #6b7280;
+            --box-bg: rgba(20, 20, 20, 0.8);
         }
 
         * {
@@ -25,36 +25,31 @@
             color: var(--text-color);
             font-family: 'Fira Code', monospace;
             line-height: 1.6;
-            overflow-x: hidden;
             padding: 20px;
             position: relative;
         }
 
-        /* Анимированный фон (Матрица) */
-        #matrix-canvas {
+        /* Убрал "Матрицу", оставил стильный темный фон */
+        body::before {
+            content: '';
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
+            top: 0; left: 0; width: 100vw; height: 100vh;
+            background: radial-gradient(circle at 50% 50%, #111 0%, #050505 100%);
             z-index: -1;
-            opacity: 0.15;
         }
 
         .container {
-            max-width: 800px;
+            max-width: 750px;
             margin: 0 auto;
             position: relative;
             z-index: 1;
         }
 
         h1 {
-            font-size: 2.5rem;
-            text-shadow: 0 0 10px var(--text-color);
-            margin-bottom: 10px;
+            font-size: 2.2rem;
+            color: var(--text-accent);
+            margin-bottom: 5px;
             margin-top: 20px;
-            text-transform: uppercase;
-            letter-spacing: 2px;
         }
 
         .subtitle {
@@ -65,20 +60,19 @@
 
         .terminal-block {
             background: var(--box-bg);
-            border: 1px solid var(--text-dim);
-            border-radius: 5px;
-            padding: 15px;
+            border: 1px solid #222;
+            border-left: 3px solid var(--text-accent); /* Аккуратная полоска слева вместо рамки */
+            border-radius: 4px;
+            padding: 15px 20px;
             margin-bottom: 20px;
-            position: relative;
-            box-shadow: 0 0 10px rgba(0, 255, 65, 0.1);
         }
 
         .block-header {
             color: var(--text-dim);
             font-size: 0.8rem;
             margin-bottom: 15px;
-            border-bottom: 1px dashed var(--text-dim);
-            padding-bottom: 5px;
+            border-bottom: 1px solid #333;
+            padding-bottom: 8px;
             display: flex;
             justify-content: space-between;
         }
@@ -86,8 +80,8 @@
         .block-title {
             color: var(--text-color);
             font-weight: bold;
-            font-size: 1.1rem;
-            margin-bottom: 8px;
+            font-size: 1rem;
+            margin-bottom: 10px;
             margin-top: 20px;
         }
 
@@ -96,56 +90,49 @@
         }
 
         .text-content p {
-            margin-bottom: 10px;
+            margin-bottom: 12px;
         }
 
-        .dim { color: #888; }
-        .green { color: var(--text-color); font-weight: bold; }
+        .highlight { color: var(--text-accent); font-weight: bold; }
+        .dim { color: var(--text-dim); font-style: italic; }
 
         .btn {
-            background: transparent;
+            background: #1a1a1a;
             color: var(--text-color);
-            border: 1px solid var(--text-color);
+            border: 1px solid #333;
             padding: 8px 16px;
             font-family: 'Fira Code', monospace;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             cursor: pointer;
             margin-top: 15px;
-            transition: all 0.3s;
             border-radius: 3px;
-            text-decoration: none;
-            display: inline-block;
+            transition: 0.2s;
         }
 
         .btn:hover {
-            background: var(--text-color);
-            color: var(--bg-color);
-            box-shadow: 0 0 15px var(--text-color);
+            border-color: var(--text-accent);
+            color: var(--text-accent);
         }
 
         .contact-links {
             display: flex;
             gap: 15px;
-            margin-top: 15px;
-            flex-wrap: wrap;
+            margin-top: 10px;
         }
 
         .contact-btn {
             text-decoration: none;
-            color: var(--text-color);
-            border: 1px solid var(--text-dim);
+            color: var(--bg-color);
+            background: var(--text-accent);
             padding: 8px 15px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
             font-size: 0.9rem;
-            transition: 0.3s;
+            border-radius: 3px;
+            font-weight: bold;
+            transition: 0.2s;
         }
 
         .contact-btn:hover {
-            border-color: var(--text-color);
-            box-shadow: 0 0 10px var(--text-color);
-            background: rgba(0, 255, 65, 0.1);
+            opacity: 0.8;
         }
 
         .footer {
@@ -154,15 +141,15 @@
             font-size: 0.75rem;
             color: var(--text-dim);
             margin-top: 40px;
-            border-top: 1px solid var(--text-dim);
-            padding-top: 10px;
+            border-top: 1px solid #222;
+            padding-top: 15px;
             flex-wrap: wrap;
-            gap: 10px;
         }
 
         .cursor::after {
-            content: '█';
+            content: '_';
             animation: blink 1s step-start infinite;
+            color: var(--text-accent);
         }
 
         @keyframes blink {
@@ -172,161 +159,92 @@
 </head>
 <body>
 
-    <canvas id="matrix-canvas"></canvas>
-
     <div class="container">
-        <!-- Верхний блок (Профиль) -->
+        <!-- Блок 1: Приветствие -->
         <div class="terminal-block">
             <div class="block-header">
-                <span>root@hijodehiero:~# whoami</span>
-                <span>status: compiling... </span>
+                <span>user@hijodehiero:~$ ./start.sh</span>
+                <span>uptime: 26 years</span>
             </div>
-            <h1>HijoDelHierro</h1>
-            <div class="subtitle">> El hierro no miente. El hombre se forja._</div>
+            <h1>Привет, я hijodehiero.</h1>
+            <div class="subtitle">// Пишу код. Иногда поднимаю железо.</div>
             <div class="text-content">
-                <p>Я не супергерой и не киборг. Я обычный человек, который пытается совместить несовместимое: дебаггинг кода за компьютером и тяжелый тренинг в зале. Железо не прощает слабости, но и компилятор не прощает ошибок.</p>
-                <p>Мой стек: <span class="green">Python</span>, <span class="green">C++</span> и <span class="green">C19H28O2</span>. Работаю над собой в режиме 24/7.</p>
+                <p>По специальности я разработчик. По необходимости — человек, который пытается не сломать себе спину на тренировках и не сойти с ума от багов в продакшене.</p>
+                <p>Здесь я собираю свои мысли, проекты и оправдания, почему код не компилируется.</p>
             </div>
         </div>
 
-        <!-- Блок whoami -->
+        <!-- Блок 2: Настройки / Стек -->
         <div class="terminal-block">
             <div class="block-header">
-                <span>$ cat about_me.txt</span>
+                <span>$ cat config.json</span>
             </div>
-            <div class="block-title">> whoami</div>
+            <div class="block-title">> Основной стек</div>
             <div class="text-content">
-                <p>Локация: Дом / Спортзал. Режим: Mass Gain & Bug Fixing.</p>
-                <p>Инструменты: <span class="green">Штанга</span>, <span class="green">IDE</span> и безграничная вера в то, что «и так сойдет» (но мы-то знаем, что не сойдет).</p>
+                <p><span class="highlight">Python / C++</span> — пишу бэкенд и скрипты. Люблю, когда всё работает автоматически.</p>
+                <p><span class="highlight">Штанга / Гантели</span> — вынужденная мера, чтобы спина не отваливалась от 8 часов сидения за компом.</p>
             </div>
-            <div class="block-title">> cat philosophy.txt</div>
+            
+            <div class="block-title">> Правила выживания</div>
             <div class="text-content">
-                <p>В программировании, как и в спорте: если не работает — ищи баг. Если не растет — ищи ошибку в программе тренировок и питании.</p>
-                <p>Главное правило: не сравнивай свой код с чужим, а свой вес — с чужим. Сравнивай себя с собой вчерашним.</p>
+                <p>1. Если код работает — не трогай его до релиза.</p>
+                <p>2. Если спина болит — не делай становую тягу, иди к врачу (проходили, знаем).</p>
+                <p>3. Сон — это не роскошь, а необходимость для компиляции мозга.</p>
             </div>
-            <div class="block-title">> tail -f reality.log</div>
-            <div class="text-content">
-                <p>Если ты видишь, как кто-то сдается — значит, у него в коде произошел Segmentation Fault.</p>
-                <p>Дисциплина > Мотивация. Рефакторинг тела — процесс пожизненный.</p>
-            </div>
-            <div class="block-title">> systemctl status my_brain</div>
-            <div class="text-content cursor">
-                // Ошибка 404: жалость к себе не найдена. Продолжаю компиляцию...
-            </div>
-            <button class="btn" onclick="rerun()">$ reboot_system</button>
-        </div>
-
-        <!-- Блок проектов / Целей -->
-        <div class="terminal-block">
-            <div class="block-header">
-                <span>$ ls ./goals</span>
-            </div>
-            <div class="text-content">
-                <p>-rwxr-xr-x 1 root root 0B "Выйти на новый рабочий вес (и не сломать поясницу)"</p>
-                <p>-rw-r--r-- 1 root root 404B "Подтянуть технику базовых движений и чистоту кода"</p>
-                <p>$ rm -rf ./excuses</p>
+            <div class="text-content cursor" style="margin-top: 15px;">
+                // Статус: ищу баланс между дедлайнами и восстановлением
             </div>
         </div>
 
-        <!-- Блок мемов (Мысли) -->
+        <!-- Блок 3: Что делаю сейчас -->
         <div class="terminal-block">
             <div class="block-header">
-                <span>$ ./random_thought.sh</span>
+                <span>$ tail -f current_focus.log</span>
             </div>
-            <div class="text-content" id="meme-box">
-                <p><span class="dim">$ ./random_thought.sh --seed 0x0000 > MEME_ID:</span></p>
-                <p>#0x0000 "Ошибка — это не провал, это просто ещё один способ, которым это не работает."</p>
-                <p><span class="dim">> status: разум чист, готов к работе</span></p>
+            <div class="text-content">
+                <p>- Пишу пару пет-проектов на Python для автоматизации рутины.</p>
+                <p>- Разбираюсь с новыми подходами к тренировкам с учетом ограничений по спине.</p>
+                <p>- Пытаюсь выспаться (пока безуспешно).</p>
             </div>
-            <button class="btn" onclick="generateMeme()">$ сгенерировать_мысль</button>
+            <button class="btn" onclick="generateThought()">$ сгенерировать_мысль</button>
+            <div id="thought-box" class="text-content dim" style="margin-top: 15px; display: none;"></div>
         </div>
 
-        <!-- Блок контактов -->
+        <!-- Блок 4: Контакты -->
         <div class="terminal-block">
             <div class="block-header">
-                <span>$ ./contact.sh</span>
+                <span>$ ./contacts.sh</span>
             </div>
             <div class="contact-links">
-                <a href="https://t.me/fonbw" class="contact-btn" target="_blank">➔ Telegram: @fonbw</a>
-                <a href="#" class="contact-btn" target="_blank">👾 Discord</a>
+                <a href="https://t.me/fonbw" class="contact-btn" target="_blank">Telegram</a>
+                <!-- Если дискорда нет, можно убрать или вставить свой ник -->
+                <a href="#" class="contact-btn" target="_blank">Discord</a>
             </div>
         </div>
 
         <!-- Футер -->
         <div class="footer">
-            <span>// No humans were harmed (much).</span>
-            <span>Код скомпилирован | Вес поднят</span>
-            <span>exit code: 0xDEADBEEF</span>
+            <span>// Работает на кофеине и силе воли</span>
+            <span>exit code: 0</span>
         </div>
     </div>
 
     <script>
-        function rerun() {
-            document.body.style.opacity = '0';
-            setTimeout(() => {
-                window.location.reload();
-            }, 300);
-        }
-
-        // Заменил шутки на смесь IT и спорта
-        const memes = [
-            "Боль временна. Результат навсегда. Ошибки в коде вечны.",
-            "Ты не устал. Ты просто наткнулся на необработанное исключение.",
-            "Тело скажет спасибо. Потом. После дедлайна.",
-            "Если тебе легко — значит, ты не растешь (или не рефакторишь код).",
-            "Сон — для слабаков, но восстановление — для чемпионов и хороших разработчиков."
+        const thoughts = [
+            "Лучший код — это тот, который не нужно писать.",
+            "Прогресс в зале, как и в коде: главное — регулярность, а не идеальный старт.",
+            "Если долго смотреть на баг, он может исчезнуть. Но лучше просто перезапустить.",
+            "Ошибка 404: мотивация пойти на кардио не найдена.",
+            "Работает? Значит, завтра сломается."
         ];
 
-        function generateMeme() {
-            const randomIndex = Math.floor(Math.random() * memes.length);
-            const seed = Math.floor(Math.random() * 16777215).toString(16).toUpperCase();
-            const memeBox = document.getElementById('meme-box');
-            
-            memeBox.innerHTML = `
-                <p><span class="dim">$ ./random_thought.sh --seed 0x${seed} > MEME_ID:</span></p>
-                <p>#0x${seed} "${memes[randomIndex]}"</p>
-                <p><span class="dim">> status: разум чист, готов к работе</span></p>
-            `;
+        function generateThought() {
+            const box = document.getElementById('thought-box');
+            const randomIndex = Math.floor(Math.random() * thoughts.length);
+            box.style.display = 'block';
+            box.innerHTML = `> ${thoughts[randomIndex]}`;
+            box.classList.add('cursor');
         }
-
-        const canvas = document.getElementById('matrix-canvas');
-        const ctx = canvas.getContext('2d');
-
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
-
-        const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789アカサタナハマヤラワ';
-        const charArray = chars.split('');
-        
-        const fontSize = 14;
-        const columns = canvas.width / fontSize;
-        const drops = [];
-        for (let x = 0; x < columns; x++) {
-            drops[x] = 1; 
-        }
-
-        function drawMatrix() {
-            ctx.fillStyle = 'rgba(5, 5, 5, 0.05)';
-            ctx.fillRect(0, 0, canvas.width, canvas.height);
-            ctx.fillStyle = '#00ff41';
-            ctx.font = fontSize + 'px monospace';
-
-            for (let i = 0; i < drops.length; i++) {
-                const text = charArray[Math.floor(Math.random() * charArray.length)];
-                ctx.fillText(text, i * fontSize, drops[i] * fontSize);
-                if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
-                    drops[i] = 0;
-                }
-                drops[i]++;
-            }
-        }
-
-        setInterval(drawMatrix, 35);
-
-        window.addEventListener('resize', () => {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-        });
     </script>
 </body>
 </html>

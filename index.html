@@ -3,15 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>hijodehiero // localhost</title>
+    <title>hijodehiero // root</title>
     <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-color: #0a0a0a;
-            --text-color: #d1d5db; /* Сделал цвет текста более реалистичным (светло-серый), как в настоящем терминале */
-            --text-accent: #38bdf8; /* Голубой акцент вместо ядовито-зеленого */
-            --text-dim: #6b7280;
-            --box-bg: rgba(20, 20, 20, 0.8);
+            --bg-color: #000000;
+            --text-color: #a3a3a3; /* Пепельно-серый */
+            --text-accent: #ff4500; /* Оранжево-красный (OrangeRed) вместо зеленого */
+            --text-dim: #525252;
+            --box-bg: #0a0a0a;
         }
 
         * {
@@ -29,15 +29,6 @@
             position: relative;
         }
 
-        /* Убрал "Матрицу", оставил стильный темный фон */
-        body::before {
-            content: '';
-            position: fixed;
-            top: 0; left: 0; width: 100vw; height: 100vh;
-            background: radial-gradient(circle at 50% 50%, #111 0%, #050505 100%);
-            z-index: -1;
-        }
-
         .container {
             max-width: 750px;
             margin: 0 auto;
@@ -46,14 +37,14 @@
         }
 
         h1 {
-            font-size: 2.2rem;
-            color: var(--text-accent);
-            margin-bottom: 5px;
+            font-size: 2rem;
+            color: #fff;
+            margin-bottom: 10px;
             margin-top: 20px;
         }
 
         .subtitle {
-            color: var(--text-dim);
+            color: var(--text-accent);
             font-size: 0.9rem;
             margin-bottom: 30px;
         }
@@ -61,7 +52,6 @@
         .terminal-block {
             background: var(--box-bg);
             border: 1px solid #222;
-            border-left: 3px solid var(--text-accent); /* Аккуратная полоска слева вместо рамки */
             border-radius: 4px;
             padding: 15px 20px;
             margin-bottom: 20px;
@@ -71,18 +61,18 @@
             color: var(--text-dim);
             font-size: 0.8rem;
             margin-bottom: 15px;
-            border-bottom: 1px solid #333;
+            border-bottom: 1px dashed #333;
             padding-bottom: 8px;
             display: flex;
             justify-content: space-between;
         }
 
         .block-title {
-            color: var(--text-color);
-            font-weight: bold;
+            color: #fff;
             font-size: 1rem;
             margin-bottom: 10px;
             margin-top: 20px;
+            font-weight: bold;
         }
 
         .text-content {
@@ -93,25 +83,44 @@
             margin-bottom: 12px;
         }
 
-        .highlight { color: var(--text-accent); font-weight: bold; }
-        .dim { color: var(--text-dim); font-style: italic; }
+        .text-content ul {
+            list-style: none;
+            margin-bottom: 12px;
+        }
+
+        .text-content li {
+            margin-bottom: 5px;
+            position: relative;
+            padding-left: 20px;
+        }
+
+        .text-content li::before {
+            content: '>';
+            position: absolute;
+            left: 0;
+            color: var(--text-accent);
+        }
+
+        .highlight { color: #fff; font-weight: bold; }
+        .accent { color: var(--text-accent); }
+        .dim { color: var(--text-dim); }
 
         .btn {
-            background: #1a1a1a;
-            color: var(--text-color);
-            border: 1px solid #333;
+            background: transparent;
+            color: var(--text-accent);
+            border: 1px solid var(--text-accent);
             padding: 8px 16px;
             font-family: 'Fira Code', monospace;
             font-size: 0.85rem;
             cursor: pointer;
-            margin-top: 15px;
+            margin-top: 10px;
             border-radius: 3px;
             transition: 0.2s;
         }
 
         .btn:hover {
-            border-color: var(--text-accent);
-            color: var(--text-accent);
+            background: var(--text-accent);
+            color: var(--bg-color);
         }
 
         .contact-links {
@@ -122,17 +131,16 @@
 
         .contact-btn {
             text-decoration: none;
-            color: var(--bg-color);
-            background: var(--text-accent);
-            padding: 8px 15px;
+            color: var(--text-color);
+            border-bottom: 1px solid var(--text-dim);
+            padding-bottom: 2px;
             font-size: 0.9rem;
-            border-radius: 3px;
-            font-weight: bold;
             transition: 0.2s;
         }
 
         .contact-btn:hover {
-            opacity: 0.8;
+            color: var(--text-accent);
+            border-color: var(--text-accent);
         }
 
         .footer {
@@ -141,109 +149,104 @@
             font-size: 0.75rem;
             color: var(--text-dim);
             margin-top: 40px;
-            border-top: 1px solid #222;
             padding-top: 15px;
             flex-wrap: wrap;
-        }
-
-        .cursor::after {
-            content: '_';
-            animation: blink 1s step-start infinite;
-            color: var(--text-accent);
-        }
-
-        @keyframes blink {
-            50% { opacity: 0; }
         }
     </style>
 </head>
 <body>
 
     <div class="container">
-        <!-- Блок 1: Приветствие -->
+        <!-- Блок 1 -->
         <div class="terminal-block">
             <div class="block-header">
-                <span>user@hijodehiero:~$ ./start.sh</span>
-                <span>uptime: 26 years</span>
+                <span>root@hijodehiero:~#</span>
+                <span>last login: just now</span>
             </div>
-            <h1>Привет, я hijodehiero.</h1>
-            <div class="subtitle">// Пишу код. Иногда поднимаю железо.</div>
+            <h1>hijodehiero</h1>
+            <div class="subtitle">// Пишу код. Иногда поднимаю тяжести. Чаще — просто пытаюсь выжить.</div>
             <div class="text-content">
-                <p>По специальности я разработчик. По необходимости — человек, который пытается не сломать себе спину на тренировках и не сойти с ума от багов в продакшене.</p>
-                <p>Здесь я собираю свои мысли, проекты и оправдания, почему код не компилируется.</p>
+                <p>Не супергерой. Не гений. Просто человек, который совмещает <span class="highlight">IDE</span> и <span class="highlight">спортзал</span>, чтобы не превратиться в овощ с больной спиной к 30 годам.</p>
             </div>
         </div>
 
-        <!-- Блок 2: Настройки / Стек -->
+        <!-- Блок 2 -->
         <div class="terminal-block">
             <div class="block-header">
-                <span>$ cat config.json</span>
-            </div>
-            <div class="block-title">> Основной стек</div>
-            <div class="text-content">
-                <p><span class="highlight">Python / C++</span> — пишу бэкенд и скрипты. Люблю, когда всё работает автоматически.</p>
-                <p><span class="highlight">Штанга / Гантели</span> — вынужденная мера, чтобы спина не отваливалась от 8 часов сидения за компом.</p>
+                <span>$ whoami -v</span>
             </div>
             
-            <div class="block-title">> Правила выживания</div>
+            <div class="block-title"># Текущий стек</div>
             <div class="text-content">
-                <p>1. Если код работает — не трогай его до релиза.</p>
-                <p>2. Если спина болит — не делай становую тягу, иди к врачу (проходили, знаем).</p>
-                <p>3. Сон — это не роскошь, а необходимость для компиляции мозга.</p>
+                <ul>
+                    <li>Основной язык: <span class="highlight">Python</span>. Потому что время — ресурс, а не бесконечность.</li>
+                    <li>Иногда: <span class="highlight">C++</span>. Когда нужно, чтобы летало, а не просто работало.</li>
+                    <li>Железо: турник, штанга, гантели. Без пафоса про "становление мужчины". Просто чтобы спина не отваливалась.</li>
+                </ul>
             </div>
-            <div class="text-content cursor" style="margin-top: 15px;">
-                // Статус: ищу баланс между дедлайнами и восстановлением
+
+            <div class="block-title"># Жизненные принципы</div>
+            <div class="text-content">
+                <ul>
+                    <li>Работает? Не трогай. Сломалось? Отойди, выпей кофе, вернись.</li>
+                    <li>В зале главное — не эго, а техника. Иначе будешь лечить грыжи, как я.</li>
+                    <li>Дедлайн — это не дата, это состояние души.</li>
+                </ul>
             </div>
         </div>
 
-        <!-- Блок 3: Что делаю сейчас -->
+        <!-- Блок 3 -->
         <div class="terminal-block">
             <div class="block-header">
-                <span>$ tail -f current_focus.log</span>
+                <span>$ tail -f /var/log/reality.log</span>
             </div>
-            <div class="text-content">
-                <p>- Пишу пару пет-проектов на Python для автоматизации рутины.</p>
-                <p>- Разбираюсь с новыми подходами к тренировкам с учетом ограничений по спине.</p>
-                <p>- Пытаюсь выспаться (пока безуспешно).</p>
+            <div class="text-content" id="log-box">
+                <p class="dim">[INFO] Загрузка профиля... успешно.</p>
+                <p class="dim">[WARN] Обнаружена попытка написать чистый код. Отменено.</p>
+                <p class="accent">[ERROR] Мотивация пойти на кардио не найдена.</p>
             </div>
-            <button class="btn" onclick="generateThought()">$ сгенерировать_мысль</button>
-            <div id="thought-box" class="text-content dim" style="margin-top: 15px; display: none;"></div>
+            <button class="btn" onclick="addLog()">$ cat /dev/urandom</button>
         </div>
 
-        <!-- Блок 4: Контакты -->
+        <!-- Блок 4 -->
         <div class="terminal-block">
             <div class="block-header">
-                <span>$ ./contacts.sh</span>
+                <span>$ ./connect.sh</span>
             </div>
             <div class="contact-links">
-                <a href="https://t.me/fonbw" class="contact-btn" target="_blank">Telegram</a>
-                <!-- Если дискорда нет, можно убрать или вставить свой ник -->
-                <a href="#" class="contact-btn" target="_blank">Discord</a>
+                <a href="https://t.me/fonbw" class="contact-btn" target="_blank">[ Telegram: @fonbw ]</a>
+                <a href="#" class="contact-btn" target="_blank">[ Discord ]</a>
             </div>
         </div>
 
-        <!-- Футер -->
         <div class="footer">
-            <span>// Работает на кофеине и силе воли</span>
-            <span>exit code: 0</span>
+            <span>// No rights reserved. Do whatever you want.</span>
+            <span>mem: 32GB | coffee: 100%</span>
         </div>
     </div>
 
     <script>
-        const thoughts = [
-            "Лучший код — это тот, который не нужно писать.",
-            "Прогресс в зале, как и в коде: главное — регулярность, а не идеальный старт.",
-            "Если долго смотреть на баг, он может исчезнуть. Но лучше просто перезапустить.",
-            "Ошибка 404: мотивация пойти на кардио не найдена.",
-            "Работает? Значит, завтра сломается."
+        const logs = [
+            "[INFO] Сходил в зал. Теперь болят мышцы, о существовании которых я не знал.",
+            "[WARN] Код скомпилировался с первого раза. Подозрительно.",
+            "[ERROR] 404: Желание общаться с людьми не найдено.",
+            "[INFO] Сделал рефакторинг. Стало работать хуже, но красивее.",
+            "[WARN] Спина напомнила о себе. Пора менять положение за компом.",
+            "[DEBUG] Найден баг. Исправлен. Созданы два новых.",
+            "[INFO] Выпито 3 чашки кофе. Пульс: 120.",
+            "[ERROR] Попытка лечь спать до 00:00 провалена."
         ];
 
-        function generateThought() {
-            const box = document.getElementById('thought-box');
-            const randomIndex = Math.floor(Math.random() * thoughts.length);
-            box.style.display = 'block';
-            box.innerHTML = `> ${thoughts[randomIndex]}`;
-            box.classList.add('cursor');
+        function addLog() {
+            const box = document.getElementById('log-box');
+            const randomLog = logs[Math.floor(Math.random() * logs.length)];
+            const p = document.createElement('p');
+            p.className = 'accent';
+            p.innerText = randomLog;
+            box.appendChild(p);
+            
+            // Скроллим вниз, если логов много
+            box.scrollTop = box.scrollHeight;
         }
     </script>
 </body>

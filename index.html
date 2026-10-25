@@ -53,7 +53,7 @@
             text-shadow: 0 0 10px var(--text-color);
             margin-bottom: 10px;
             margin-top: 20px;
-            text-transform: uppercase; /* Сделал заглавными для суровости */
+            text-transform: uppercase;
             letter-spacing: 2px;
         }
 
@@ -179,13 +179,13 @@
         <div class="terminal-block">
             <div class="block-header">
                 <span>root@hijodehiero:~# whoami</span>
-                <span>status: training // </span>
+                <span>status: compiling... </span>
             </div>
             <h1>HijoDelHierro</h1>
             <div class="subtitle">> El hierro no miente. El hombre se forja._</div>
             <div class="text-content">
-                <p>Я не ищу легких путей. Мой прогресс — это результат дисциплины, пота и работы на пределе. Железо не прощает слабости, но и не лжет. Оно показывает ровно то, что ты в него вложил.</p>
-                <p>Формула: <span class="green">C19H28O2</span> (Тестостерон). Всё остальное — производные.</p>
+                <p>Я не супергерой и не киборг. Я обычный человек, который пытается совместить несовместимое: дебаггинг кода за компьютером и тяжелый тренинг в зале. Железо не прощает слабости, но и компилятор не прощает ошибок.</p>
+                <p>Мой стек: <span class="green">Python</span>, <span class="green">C++</span> и <span class="green">C19H28O2</span>. Работаю над собой в режиме 24/7.</p>
             </div>
         </div>
 
@@ -196,22 +196,22 @@
             </div>
             <div class="block-title">> whoami</div>
             <div class="text-content">
-                <p>Локация: Зал. Режим: Mass Gain.</p>
-                <p>Инструменты: <span class="green">Железо</span>, <span class="green">Прогрессивная перегрузка</span> и безграничная вера в себя.</p>
+                <p>Локация: Дом / Спортзал. Режим: Mass Gain & Bug Fixing.</p>
+                <p>Инструменты: <span class="green">Штанга</span>, <span class="green">IDE</span> и безграничная вера в то, что «и так сойдет» (но мы-то знаем, что не сойдет).</p>
             </div>
             <div class="block-title">> cat philosophy.txt</div>
             <div class="text-content">
-                <p>Пока другие ищут оправдания — я ищу рабочий вес. Боль — это просто слабость, покидающая тело.</p>
-                <p>Главное правило: не сравнивай себя с другими. Сравнивай себя с собой вчерашним.</p>
+                <p>В программировании, как и в спорте: если не работает — ищи баг. Если не растет — ищи ошибку в программе тренировок и питании.</p>
+                <p>Главное правило: не сравнивай свой код с чужим, а свой вес — с чужим. Сравнивай себя с собой вчерашним.</p>
             </div>
             <div class="block-title">> tail -f reality.log</div>
             <div class="text-content">
-                <p>Если ты видишь, как кто-то сдается — значит, он не был на моем месте.</p>
-                <p>Дисциплина > Мотивация.</p>
+                <p>Если ты видишь, как кто-то сдается — значит, у него в коде произошел Segmentation Fault.</p>
+                <p>Дисциплина > Мотивация. Рефакторинг тела — процесс пожизненный.</p>
             </div>
             <div class="block-title">> systemctl status my_brain</div>
             <div class="text-content cursor">
-                // Ошибка 404: жалость к себе не найдена. Продолжаю работать...
+                // Ошибка 404: жалость к себе не найдена. Продолжаю компиляцию...
             </div>
             <button class="btn" onclick="rerun()">$ reboot_system</button>
         </div>
@@ -222,8 +222,8 @@
                 <span>$ ls ./goals</span>
             </div>
             <div class="text-content">
-                <p>-rwxr-xr-x 1 root root 0B "Выйти на новый рабочий вес"</p>
-                <p>-rw-r--r-- 1 root root 404B "Подтянуть технику базовых движений"</p>
+                <p>-rwxr-xr-x 1 root root 0B "Выйти на новый рабочий вес (и не сломать поясницу)"</p>
+                <p>-rw-r--r-- 1 root root 404B "Подтянуть технику базовых движений и чистоту кода"</p>
                 <p>$ rm -rf ./excuses</p>
             </div>
         </div>
@@ -235,19 +235,18 @@
             </div>
             <div class="text-content" id="meme-box">
                 <p><span class="dim">$ ./random_thought.sh --seed 0x0000 > MEME_ID:</span></p>
-                <p>#0x0000 "Боль временна. Результат навсегда."</p>
+                <p>#0x0000 "Ошибка — это не провал, это просто ещё один способ, которым это не работает."</p>
                 <p><span class="dim">> status: разум чист, готов к работе</span></p>
             </div>
             <button class="btn" onclick="generateMeme()">$ сгенерировать_мысль</button>
         </div>
 
-        <!-- Блок контактов (Добавил канал) -->
+        <!-- Блок контактов -->
         <div class="terminal-block">
             <div class="block-header">
                 <span>$ ./contact.sh</span>
             </div>
             <div class="contact-links">
-                <!-- Ссылка на твой канал/профиль -->
                 <a href="https://t.me/fonbw" class="contact-btn" target="_blank">➔ Telegram: @fonbw</a>
                 <a href="#" class="contact-btn" target="_blank">👾 Discord</a>
             </div>
@@ -256,7 +255,7 @@
         <!-- Футер -->
         <div class="footer">
             <span>// No humans were harmed (much).</span>
-            <span>Сожжено калорий: ∞</span>
+            <span>Код скомпилирован | Вес поднят</span>
             <span>exit code: 0xDEADBEEF</span>
         </div>
     </div>
@@ -269,13 +268,13 @@
             }, 300);
         }
 
-        // Заменил шутки про код на мотивацию из зала
+        // Заменил шутки на смесь IT и спорта
         const memes = [
-            "Боль временна. Результат навсегда.",
-            "Ты не устал. Ты просто слаб. Иди работай.",
-            "Тело скажет спасибо. Потом.",
-            "Если тебе легко — значит, ты не растешь.",
-            "Сон — для слабаков, но восстановление — для чемпионов."
+            "Боль временна. Результат навсегда. Ошибки в коде вечны.",
+            "Ты не устал. Ты просто наткнулся на необработанное исключение.",
+            "Тело скажет спасибо. Потом. После дедлайна.",
+            "Если тебе легко — значит, ты не растешь (или не рефакторишь код).",
+            "Сон — для слабаков, но восстановление — для чемпионов и хороших разработчиков."
         ];
 
         function generateMeme() {

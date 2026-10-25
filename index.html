@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>hijodehiero // system</title>
+    <title>HijoDelHierro // System</title>
     <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;700&display=swap" rel="stylesheet">
     <style>
         :root {
             --bg-color: #050505;
-            --text-color: #00ff41;
+            --text-color: #00ff41; /* Кислотно-зеленый */
             --text-dim: #008f11;
             --box-bg: rgba(0, 20, 0, 0.6);
             --border-color: #00ff41;
@@ -41,7 +41,6 @@
             opacity: 0.15;
         }
 
-        /* Основной контейнер */
         .container {
             max-width: 800px;
             margin: 0 auto;
@@ -49,13 +48,13 @@
             z-index: 1;
         }
 
-        /* Заголовки */
         h1 {
             font-size: 2.5rem;
             text-shadow: 0 0 10px var(--text-color);
             margin-bottom: 10px;
             margin-top: 20px;
-            text-transform: lowercase;
+            text-transform: uppercase; /* Сделал заглавными для суровости */
+            letter-spacing: 2px;
         }
 
         .subtitle {
@@ -64,7 +63,6 @@
             margin-bottom: 30px;
         }
 
-        /* Блоки с текстом (терминал) */
         .terminal-block {
             background: var(--box-bg);
             border: 1px solid var(--text-dim);
@@ -98,13 +96,12 @@
         }
 
         .text-content p {
-            margin-bottom: 10px; /* Отступы между абзацами */
+            margin-bottom: 10px;
         }
 
         .dim { color: #888; }
-        .green { color: var(--text-color); }
+        .green { color: var(--text-color); font-weight: bold; }
 
-        /* Кнопки */
         .btn {
             background: transparent;
             color: var(--text-color);
@@ -116,6 +113,8 @@
             margin-top: 15px;
             transition: all 0.3s;
             border-radius: 3px;
+            text-decoration: none;
+            display: inline-block;
         }
 
         .btn:hover {
@@ -124,7 +123,6 @@
             box-shadow: 0 0 15px var(--text-color);
         }
 
-        /* Ссылки (Контакты) */
         .contact-links {
             display: flex;
             gap: 15px;
@@ -147,9 +145,9 @@
         .contact-btn:hover {
             border-color: var(--text-color);
             box-shadow: 0 0 10px var(--text-color);
+            background: rgba(0, 255, 65, 0.1);
         }
 
-        /* Футер */
         .footer {
             display: flex;
             justify-content: space-between;
@@ -162,7 +160,6 @@
             gap: 10px;
         }
 
-        /* Эффект курсора */
         .cursor::after {
             content: '█';
             animation: blink 1s step-start infinite;
@@ -182,13 +179,13 @@
         <div class="terminal-block">
             <div class="block-header">
                 <span>root@hijodehiero:~# whoami</span>
-                <span>status: active // </span>
+                <span>status: training // </span>
             </div>
-            <h1>hijodehiero</h1>
-            <div class="subtitle">> системный администратор хаоса_</div>
+            <h1>HijoDelHierro</h1>
+            <div class="subtitle">> El hierro no miente. El hombre se forja._</div>
             <div class="text-content">
-                <p>Пишу код, который ломает шаблоны (и иногда продакшн). Живу по принципу: «Если это работает — не трогай, если не работает — значит, так задумано».</p>
-                <p>Моя главная цель — заставить ваш таск-менеджер плакать кровавыми слезами.</p>
+                <p>Я не ищу легких путей. Мой прогресс — это результат дисциплины, пота и работы на пределе. Железо не прощает слабости, но и не лжет. Оно показывает ровно то, что ты в него вложил.</p>
+                <p>Формула: <span class="green">C19H28O2</span> (Тестостерон). Всё остальное — производные.</p>
             </div>
         </div>
 
@@ -199,57 +196,58 @@
             </div>
             <div class="block-title">> whoami</div>
             <div class="text-content">
-                <p>Роль: Full-stack дегенерат и по совместительству повелитель багов.</p>
-                <p>Инструменты: <span class="green">Python</span>, <span class="green">C++</span> и безграничная наглость. Логика уровня «потом пофикшу» и алгоритмы, которые обходят любые блокировки.</p>
+                <p>Локация: Зал. Режим: Mass Gain.</p>
+                <p>Инструменты: <span class="green">Железо</span>, <span class="green">Прогрессивная перегрузка</span> и безграничная вера в себя.</p>
             </div>
             <div class="block-title">> cat philosophy.txt</div>
             <div class="text-content">
-                <p>Зачем писать чистый и понятный код, если можно написать его так, чтобы через месяц самому не понять, как это работает?</p>
-                <p>Главное правило: комментарии в коде должны пугать даже автора.</p>
+                <p>Пока другие ищут оправдания — я ищу рабочий вес. Боль — это просто слабость, покидающая тело.</p>
+                <p>Главное правило: не сравнивай себя с другими. Сравнивай себя с собой вчерашним.</p>
             </div>
             <div class="block-title">> tail -f reality.log</div>
             <div class="text-content">
-                <p>Если вы видите, как сервер упал без причины — это моя работа.</p>
-                <p>Если у вас внезапно сгорел дедлайн — значит, я где-то рядом.</p>
+                <p>Если ты видишь, как кто-то сдается — значит, он не был на моем месте.</p>
+                <p>Дисциплина > Мотивация.</p>
             </div>
             <div class="block-title">> systemctl status my_brain</div>
             <div class="text-content cursor">
-                // Ошибка 404: мотивация не найдена. Продолжаю чилить...
+                // Ошибка 404: жалость к себе не найдена. Продолжаю работать...
             </div>
             <button class="btn" onclick="rerun()">$ reboot_system</button>
         </div>
 
-        <!-- Блок проектов -->
+        <!-- Блок проектов / Целей -->
         <div class="terminal-block">
             <div class="block-header">
-                <span>$ ls ./projects</span>
+                <span>$ ls ./goals</span>
             </div>
             <div class="text-content">
-                <p>-rwxr-xr-x 1 root root 0B "Идея на миллион (в разработке с 2021 года)"</p>
-                <p>-rw-r--r-- 1 root root 404B "Недописанный скрипт для обхода блокировок"</p>
-                <p>$ rm -rf ./responsibilities</p>
+                <p>-rwxr-xr-x 1 root root 0B "Выйти на новый рабочий вес"</p>
+                <p>-rw-r--r-- 1 root root 404B "Подтянуть технику базовых движений"</p>
+                <p>$ rm -rf ./excuses</p>
             </div>
         </div>
 
-        <!-- Блок мемов -->
+        <!-- Блок мемов (Мысли) -->
         <div class="terminal-block">
             <div class="block-header">
                 <span>$ ./random_thought.sh</span>
             </div>
             <div class="text-content" id="meme-box">
                 <p><span class="dim">$ ./random_thought.sh --seed 0x0000 > MEME_ID:</span></p>
-                <p>#0x0000 "Я не ленивый. Я просто нахожусь в режиме максимальной энергоэффективности."</p>
-                <p><span class="dim">> status: успешно потрачено еще 5 минут жизни</span></p>
+                <p>#0x0000 "Боль временна. Результат навсегда."</p>
+                <p><span class="dim">> status: разум чист, готов к работе</span></p>
             </div>
             <button class="btn" onclick="generateMeme()">$ сгенерировать_мысль</button>
         </div>
 
-        <!-- Блок контактов -->
+        <!-- Блок контактов (Добавил канал) -->
         <div class="terminal-block">
             <div class="block-header">
                 <span>$ ./contact.sh</span>
             </div>
             <div class="contact-links">
+                <!-- Ссылка на твой канал/профиль -->
                 <a href="https://t.me/fonbw" class="contact-btn" target="_blank">➔ Telegram: @fonbw</a>
                 <a href="#" class="contact-btn" target="_blank">👾 Discord</a>
             </div>
@@ -258,7 +256,7 @@
         <!-- Футер -->
         <div class="footer">
             <span>// No humans were harmed (much).</span>
-            <span>uptime: forever</span>
+            <span>Сожжено калорий: ∞</span>
             <span>exit code: 0xDEADBEEF</span>
         </div>
     </div>
@@ -271,12 +269,13 @@
             }, 300);
         }
 
+        // Заменил шутки про код на мотивацию из зала
         const memes = [
-            "Мой код не багованный, это фича. Просто вы не понимаете задумку автора.",
-            "Работает? Не трогай!",
-            "Если ты не понял мой код — значит, ты не достоин его величия.",
-            "Я не ленивый, я в режиме энергосбережения.",
-            "99 маленьких багов в коде, исправил один — 127 маленьких багов в коде."
+            "Боль временна. Результат навсегда.",
+            "Ты не устал. Ты просто слаб. Иди работай.",
+            "Тело скажет спасибо. Потом.",
+            "Если тебе легко — значит, ты не растешь.",
+            "Сон — для слабаков, но восстановление — для чемпионов."
         ];
 
         function generateMeme() {
@@ -287,7 +286,7 @@
             memeBox.innerHTML = `
                 <p><span class="dim">$ ./random_thought.sh --seed 0x${seed} > MEME_ID:</span></p>
                 <p>#0x${seed} "${memes[randomIndex]}"</p>
-                <p><span class="dim">> status: успешно потрачено еще 5 минут жизни</span></p>
+                <p><span class="dim">> status: разум чист, готов к работе</span></p>
             `;
         }
 

@@ -1,155 +1,334 @@
-    * {
-        box-sizing: border-box;
-        margin: 0;
-        padding: 0;
-    }
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>hijodehiero // system</title>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #050505;
+            --text-color: #00ff41;
+            --text-dim: #008f11;
+            --box-bg: rgba(0, 20, 0, 0.6);
+            --border-color: #00ff41;
+        }
 
-    body {
-        background-color: var(--bg-color);
-        color: var(--text-color);
-        font-family: 'Fira Code', monospace;
-        line-height: 1.5;
-        overflow-x: hidden;
-        padding: 20px;
-        position: relative;
-    }
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
 
-    /* Анимированный фон (Матрица) */
-    #matrix-canvas {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100vw;
-        height: 100vh;
-        z-index: -1;
-        opacity: 0.15;
-    }
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: 'Fira Code', monospace;
+            line-height: 1.5;
+            overflow-x: hidden;
+            padding: 20px;
+            position: relative;
+        }
 
-    /* Основной контейнер */
-    .container {
-        max-width: 800px;
-        margin: 0 auto;
-        position: relative;
-        z-index: 1;
-    }
+        /* Анимированный фон (Матрица) */
+        #matrix-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: -1;
+            opacity: 0.15;
+        }
 
-    /* Заголовки */
-    h1 {
-        font-size: 2.5rem;
-        text-shadow: 0 0 10px var(--text-color);
-        margin-bottom: 10px;
-        margin-top: 20px;
-        text-transform: lowercase;
-    }
+        /* Основной контейнер */
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
 
-    .subtitle {
-        color: var(--text-dim);
-        font-size: 0.9rem;
-        margin-bottom: 30px;
-    }
+        /* Заголовки */
+        h1 {
+            font-size: 2.5rem;
+            text-shadow: 0 0 10px var(--text-color);
+            margin-bottom: 10px;
+            margin-top: 20px;
+            text-transform: lowercase;
+        }
 
-    /* Блоки с текстом (терминал) */
-    .terminal-block {
-        background: var(--box-bg);
-        border: 1px solid var(--text-dim);
-        border-radius: 5px;
-        padding: 15px;
-        margin-bottom: 20px;
-        position: relative;
-        box-shadow: 0 0 10px rgba(0, 255, 65, 0.1);
-    }
+        .subtitle {
+            color: var(--text-dim);
+            font-size: 0.9rem;
+            margin-bottom: 30px;
+        }
 
-    .block-header {
-        color: var(--text-dim);
-        font-size: 0.8rem;
-        margin-bottom: 10px;
-        border-bottom: 1px dashed var(--text-dim);
-        padding-bottom: 5px;
-        display: flex;
-        justify-content: space-between;
-    }
+        /* Блоки с текстом (терминал) */
+        .terminal-block {
+            background: var(--box-bg);
+            border: 1px solid var(--text-dim);
+            border-radius: 5px;
+            padding: 15px;
+            margin-bottom: 20px;
+            position: relative;
+            box-shadow: 0 0 10px rgba(0, 255, 65, 0.1);
+        }
 
-    .block-title {
-        color: var(--text-color);
-        font-weight: bold;
-        font-size: 1.1rem;
-        margin-bottom: 10px;
-        margin-top: 15px;
-    }
+        .block-header {
+            color: var(--text-dim);
+            font-size: 0.8rem;
+            margin-bottom: 10px;
+            border-bottom: 1px dashed var(--text-dim);
+            padding-bottom: 5px;
+            display: flex;
+            justify-content: space-between;
+        }
 
-    .text-content {
-        white-space: pre-wrap;
-        font-size: 0.95rem;
-    }
+        .block-title {
+            color: var(--text-color);
+            font-weight: bold;
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+            margin-top: 15px;
+        }
 
-    .dim { color: #888; }
-    .green { color: var(--text-color); }
+        .text-content {
+            white-space: pre-wrap;
+            font-size: 0.95rem;
+        }
 
-    /* Кнопки */
-    .btn {
-        background: transparent;
-        color: var(--text-color);
-        border: 1px solid var(--text-color);
-        padding: 8px 16px;
-        font-family: 'Fira Code', monospace;
-        font-size: 0.9rem;
-        cursor: pointer;
-        margin-top: 15px;
-        transition: all 0.3s;
-        border-radius: 3px;
-    }
+        .dim { color: #888; }
+        .green { color: var(--text-color); }
 
-    .btn:hover {
-        background: var(--text-color);
-        color: var(--bg-color);
-        box-shadow: 0 0 15px var(--text-color);
-    }
+        /* Кнопки */
+        .btn {
+            background: transparent;
+            color: var(--text-color);
+            border: 1px solid var(--text-color);
+            padding: 8px 16px;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.9rem;
+            cursor: pointer;
+            margin-top: 15px;
+            transition: all 0.3s;
+            border-radius: 3px;
+        }
 
-    /* Ссылки (Контакты) */
-    .contact-links {
-        display: flex;
-        gap: 15px;
-        margin-top: 15px;
-        flex-wrap: wrap;
-    }
+        .btn:hover {
+            background: var(--text-color);
+            color: var(--bg-color);
+            box-shadow: 0 0 15px var(--text-color);
+        }
 
-    .contact-btn {
-        text-decoration: none;
-        color: var(--text-color);
-        border: 1px solid var(--text-dim);
-        padding: 8px 15px;
-        display: flex;
-        align-items: center;
-        gap: 8px;
-        font-size: 0.9rem;
-        transition: 0.3s;
-    }
+        /* Ссылки (Контакты) */
+        .contact-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 15px;
+            flex-wrap: wrap;
+        }
 
-    .contact-btn:hover {
-        border-color: var(--text-color);
-        box-shadow: 0 0 10px var(--text-color);
-    }
+        .contact-btn {
+            text-decoration: none;
+            color: var(--text-color);
+            border: 1px solid var(--text-dim);
+            padding: 8px 15px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.9rem;
+            transition: 0.3s;
+        }
 
-    /* Футер */
-    .footer {
-        display: flex;
-        justify-content: space-between;
-        font-size: 0.75rem;
-        color: var(--text-dim);
-        margin-top: 40px;
-        border-top: 1px solid var(--text-dim);
-        padding-top: 10px;
-        flex-wrap: wrap;
-        gap: 10px;
-    }
+        .contact-btn:hover {
+            border-color: var(--text-color);
+            box-shadow: 0 0 10px var(--text-color);
+        }
 
-    /* Эффект курсора */
-    .cursor::after {
-        content: '█';
-        animation: blink 1s step-start infinite;
-    }
+        /* Футер */
+        .footer {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.75rem;
+            color: var(--text-dim);
+            margin-top: 40px;
+            border-top: 1px solid var(--text-dim);
+            padding-top: 10px;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
 
-    @keyframes blink {
-        50% { opacity: 0; }
-    }
-</style>
+        /* Эффект курсора */
+        .cursor::after {
+            content: '█';
+            animation: blink 1s step-start infinite;
+        }
+
+        @keyframes blink {
+            50% { opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+
+    <canvas id="matrix-canvas"></canvas>
+
+    <div class="container">
+        <!-- Верхний блок (Профиль) -->
+        <div class="terminal-block">
+            <div class="block-header">
+                <span>hijodehiero@localhost:~$ whoami</span>
+                <span>status: active // </span>
+            </div>
+            <h1>hijodehiero</h1>
+            <div class="subtitle">// системный администратор хаоса</div>
+            <p class="text-content">
+                Пишу код, который ломает шаблоны (и иногда продакшн). Живу по принципу: «Если это работает — не трогай, если не работает — значит, так задумано». 
+                Моя главная цель — заставить ваш таск-менеджер плакать кровавыми слезами.
+            </p>
+        </div>
+
+        <!-- Блок whoami -->
+        <div class="terminal-block">
+            <div class="block-header">
+                <span>$ cat about_me.txt</span>
+            </div>
+            <div class="block-title">$ whoami</div>
+            <div class="text-content">
+                Роль: Full-stack дегенерат и по совместительству повелитель багов.<br>
+                Инструменты: <span class="green">Python</span>, <span class="green">C++</span> и безграничная наглость. Логика уровня «потом пофикшу» и алгоритмы, которые обходят любые блокировки.
+            </div>
+            <div class="block-title">$ cat philosophy.txt</div>
+            <div class="text-content">
+                Зачем писать чистый и понятный код, если можно написать его так, чтобы через месяц самому не понять, как это работает? 
+                Главное правило: комментарии в коде должны пугать даже автора.
+            </div>
+            <div class="block-title">$ tail -f reality.log</div>
+            <div class="text-content">
+                Если вы видите, как сервер упал без причины — это моя работа.<br>
+                Если у вас внезапно сгорел дедлайн — значит, я где-то рядом. 
+            </div>
+            <div class="block-title">$ systemctl status my_brain</div>
+            <div class="text-content cursor">
+                // Ошибка 404: мотивация не найдена. Продолжаю чилить...
+            </div>
+            <button class="btn" onclick="rerun()">$ reboot_system</button>
+        </div>
+
+        <!-- Блок проектов -->
+        <div class="terminal-block">
+            <div class="block-header">
+                <span>$ ls ./projects</span>
+            </div>
+            <div class="text-content">
+                $ ls -la ./my_great_ideas<br>
+                -rwxr-xr-x 1 root root 0B "Идея на миллион (в разработке с 2021 года)"<br>
+                -rw-r--r-- 1 root root 404B "Недописанный скрипт для обхода блокировок"<br>
+                $ rm -rf ./responsibilities
+            </div>
+        </div>
+
+        <!-- Блок мемов -->
+        <div class="terminal-block">
+            <div class="block-header">
+                <span>$ ./random_thought.sh</span>
+            </div>
+            <div class="text-content" id="meme-box">
+                <span class="dim">$ ./random_thought.sh --seed 0x0000 > MEME_ID:</span><br>
+                #0x0000 "Я не ленивый. Я просто нахожусь в режиме максимальной энергоэффективности."
+                <br><br>
+                <span class="dim">> status: успешно потрачено еще 5 минут жизни</span>
+            </div>
+            <button class="btn" onclick="generateMeme()">$ сгенерировать мысль</button>
+        </div>
+
+        <!-- Блок контактов -->
+        <div class="terminal-block">
+            <div class="block-header">
+                <span>$ ./contact.sh</span>
+            </div>
+            <div class="contact-links">
+                <a href="https://t.me/fonbw" class="contact-btn" target="_blank">➔ Telegram: @fonbw</a>
+                <a href="#" class="contact-btn" target="_blank">👾 Discord</a>
+            </div>
+        </div>
+
+        <!-- Футер -->
+        <div class="footer">
+            <span>// Все права защищены. Никто не пострадал (почти).</span>
+            <span>Чашек кофе выпито: ∞</span>
+            <span>exit code: 0xDEADBEEF</span>
+        </div>
+    </div>
+
+    <script>
+        function rerun() {
+            document.body.style.opacity = '0';
+            setTimeout(() => {
+                window.location.reload();
+            }, 300);
+        }
+
+        const memes = [
+            "Мой код не багованный, это фича. Просто вы не понимаете задумку автора.",
+            "Работает? Не трогай!",
+            "Если ты не понял мой код — значит, ты не достоин его величия.",
+            "Я не ленивый, я в режиме энергосбережения.",
+            "99 маленьких багов в коде, исправил один — 127 маленьких багов в коде."
+        ];
+
+        function generateMeme() {
+            const randomIndex = Math.floor(Math.random() * memes.length);
+            const seed = Math.floor(Math.random() * 16777215).toString(16).toUpperCase();
+            const memeBox = document.getElementById('meme-box');
+            
+            memeBox.innerHTML = `
+                <span class="dim">$ ./random_thought.sh --seed 0x${seed} > MEME_ID:</span><br>
+                #0x${seed} "${memes[randomIndex]}"
+                <br><br>
+                <span class="dim">> status: успешно потрачено еще 5 минут жизни</span>
+            `;
+        }
+
+        const canvas = document.getElementById('matrix-canvas');
+        const ctx = canvas.getContext('2d');
+
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789アカサタナハマヤラワ';
+        const charArray = chars.split('');
+        
+        const fontSize = 14;
+        const columns = canvas.width / fontSize;
+        const drops = [];
+        for (let x = 0; x < columns; x++) {
+            drops[x] = 1; 
+        }
+
+        function drawMatrix() {
+            ctx.fillStyle = 'rgba(5, 5, 5, 0.05)';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            ctx.fillStyle = '#00ff41';
+            ctx.font = fontSize + 'px monospace';
+
+            for (let i = 0; i < drops.length; i++) {
+                const text = charArray[Math.floor(Math.random() * charArray.length)];
+                ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+                if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+                    drops[i] = 0;
+                }
+                drops[i]++;
+            }
+        }
+
+        setInterval(drawMatrix, 35);
+
+        window.addEventListener('resize', () => {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        });
+    </script>
+</body>
+</html>

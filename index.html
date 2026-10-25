@@ -29,7 +29,6 @@
             position: relative;
         }
 
-        /* Анимированный фон (Матрица) */
         #matrix-canvas {
             position: fixed;
             top: 0;
@@ -47,7 +46,6 @@
             z-index: 1;
         }
 
-        /* Профиль с аватаркой */
         .profile-header {
             display: flex;
             align-items: center;
@@ -189,10 +187,9 @@
 
     <div class="container">
         
-        <!-- БЛОК ПРОФИЛЯ С ТВОИМ АРТОМ -->
+        <!-- БЛОК ПРОФИЛЯ -->
         <div class="profile-header">
             <img src="https://i.imgur.com/gNNQ81f.jpeg" alt="hijodehiero avatar" class="avatar-img">
-            
             <div>
                 <h1>hijodehiero</h1>
                 <div class="subtitle">// El hierro no miente. El hombre se forja.</div>
@@ -228,22 +225,17 @@
                 <p>2. Если баг не воспроизводится — значит, он испугался тебя.</p>
                 <p>3. Сон — это не роскошь, а необходимость для компиляции мозга.</p>
             </div>
-            <div class="text-content cursor" style="margin-top: 15px;">
-                // Статус: ищу баланс между дедлайнами и кофеином
-            </div>
         </div>
 
-        <!-- Блок 3 -->
+        <!-- БЛОК С ГЕНЕРАЦИЕЙ ШУТОК -->
         <div class="terminal-block">
             <div class="block-header">
-                <span>$ tail -f current_focus.log</span>
+                <span>$ ./joke_generator.sh</span>
             </div>
-            <div class="text-content">
-                <p>- Пишу пару пет-проектов на Python для автоматизации рутины.</p>
-                <p>- Рефакторю старый код (пока никто не видит).</p>
-                <p>- Пытаюсь выспаться (пока безуспешно).</p>
+            <div class="text-content" id="joke-box">
+                <p class="dim">[LOG] Ожидание ввода...</p>
             </div>
-            <button class="btn" onclick="rerun()">$ reboot_system</button>
+            <button class="btn" onclick="generateJoke()">$ сгенерировать_шутку</button>
         </div>
 
         <!-- Контакты -->
@@ -263,13 +255,29 @@
     </div>
 
     <script>
-        function rerun() {
-            document.body.style.opacity = '0';
-            setTimeout(() => {
-                window.location.reload();
-            }, 300);
+        // Тот самый анекдот из Сопрано + IT-шутки
+        const jokes = [
+            "«Стоят на холме отец-бык и сын-бык, смотрят вниз на стадо коров. Сын говорит: — Пап, а давай быстренько сбежимся вниз и втюхаем вон ту коровку? А отец отвечает: — Нет, сынок. Давай мы спокойно, медленно спустимся вниз и перетрахаем их всех». (Цитата из 'Клана Сопрано')",
+            "Программист ставит на стол две чашки: одну с кофе, другую с водой. На вопрос «зачем вторая?» отвечает: «А вдруг я захочу утопиться?»",
+            "Отец-программист спрашивает сына: «Ну что, сынок, выучил уроки?». Сын: «Да, но я не уверен, что они будут работать в продакшене».",
+            "В ресторане: — Официант, у меня в супе муха! — Извините, сэр, это баг. В следующем обновлении мы это исправим.",
+            "Оптимист видит стакан наполовину полным. Пессимист — наполовину пустым. Программист — стакан, который занимает в два раза больше памяти, чем нужно."
+        ];
+
+        function generateJoke() {
+            const box = document.getElementById('joke-box');
+            const randomIndex = Math.floor(Math.random() * jokes.length);
+            
+            const jokeText = `
+                <p><span class="dim">[INFO] Загрузка шутки...</span></p>
+                <p><span class="green">> </span>${jokes[randomIndex]}</p>
+                <p><span class="dim">[SUCCESS] Шутка доставлена.</span></p>
+            `;
+            
+            box.innerHTML = jokeText;
         }
 
+        // Скрипт для фона (Матрица)
         const canvas = document.getElementById('matrix-canvas');
         const ctx = canvas.getContext('2d');
 
